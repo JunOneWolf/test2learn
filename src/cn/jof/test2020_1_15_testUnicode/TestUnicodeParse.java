@@ -1,4 +1,4 @@
-package cn.jof.test2020_1_15_testStringConcat;
+package cn.jof.test2020_1_15_testUnicode;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -144,7 +144,9 @@ public class TestUnicodeParse {
 	}
 
 	public static void main(String[] args) throws IOException {
-		InputStream fis = new FileInputStream(new File("./src/cn/jof/test2020_1_16_testStringConcat/1.txt"));
+		
+	    //\u7231\u7231，长度600个。
+	    InputStream fis = new FileInputStream(new File("./src/cn/jof/test2020_1_15_testUnicode/1.txt"));
 		StringBuilder sb = new StringBuilder();
 		byte[] bytes = new byte[1024];
 		int len = -1;
