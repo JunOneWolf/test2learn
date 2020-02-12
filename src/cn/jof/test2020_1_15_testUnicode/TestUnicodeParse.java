@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import cn.jof.utils.TimeAction;
+
 /**
  * <pre>
  * 解析普通字符串并且替换其中所有的unicode字符。其中1.txt放在当前java项目下。
@@ -157,25 +159,25 @@ public class TestUnicodeParse {
 		fis.close();
 		final String data = sb.toString();
 		new TimeAction() {
-			void action() {
+			public void action() {
 				parseUnicodeV1(data);
 			}
-		}.start("V1");
+		}.say("V1");
 		new TimeAction() {
-			void action() {
+			public void action() {
 				parseUnicodeV2(data);
 			}
-		}.start("V2");
+		}.say("V2");
 		new TimeAction() {
-			void action() {
+			public void action() {
 				parseUnicodeV3(data);
 			}
-		}.start("V3");
+		}.say("V3");
 		new TimeAction() {
-			void action() {
+			public void action() {
 				parseUnicodeV4(data);
 			}
-		}.start("V4");
+		}.say("V4");
 	}
 
 	private static boolean check16Number(char... chars) {
@@ -232,13 +234,3 @@ public class TestUnicodeParse {
 
 }
 
-abstract class TimeAction {
-	abstract void action();
-
-	void start(String msg) {
-		long t1 = System.currentTimeMillis();
-		action();
-		long t2 = System.currentTimeMillis();
-		System.out.println(msg + "花费时间(毫秒)：" + (t2 - t1));
-	};
-}
